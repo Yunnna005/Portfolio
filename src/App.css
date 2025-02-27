@@ -13,7 +13,7 @@
 
 .nav {
   width: 70%;
-  max-width: 100vw; /* Ensures navigation spans full width */
+  max-width: 100vw;
   padding: 0 3rem;
   display: flex;
   justify-content: space-between;
