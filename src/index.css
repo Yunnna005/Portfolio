@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Madimi+One&family=Mitr&display=swap");
 
 :root {
-  --background-color: rgb(8, 19, 50);
+  --background-color: rgb(255, 251, 243);
   --foreground-color: #04050a;
   --primary-color: #5368b3;
   --secondary-color: #c3a6d8;
   --accent-color: #bd76c3;
   --font-header: "Madimi One", sans-serif;
   --font-body: "Mitr", sans-serif;
-  --text-color: #eceef4;
-  --header-color: rgba(255, 255, 255, 0.88);
+  --text-color: rgb(0, 19, 80);
+  --header-color: rgba(255, 255, 255, 0.8);
 }
 
 h1,
