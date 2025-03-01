@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Madimi+One&family=Mitr&display=swap");
 
 :root {
-  --background-color: rgb(255, 251, 243);
+  --background-color: linear-gradient(
+    180deg,
+    rgb(255, 255, 255) 0%,
+    #e6f3ff 100%
+  );
   --foreground-color: #04050a;
   --primary-color: #5368b3;
   --secondary-color: #c3a6d8;
@@ -13,12 +17,13 @@
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
   font-family: var(--font-header);
+  color: #2c5282;
+  text-align: center;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
 }
 
 body {
