@@ -97,6 +97,31 @@ export default function ContactMe() {
                 <p>Ireland</p>
               </div>
             </div>
+            <div className="contact-method">
+              <div className="contact-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+
+                  <path d="M2 12h20"></path>
+
+                  <path d="M12 2c2.5 3 4 7 4 10s-1.5 7-4 10"></path>
+
+                  <path d="M12 2c-2.5 3-4 7-4 10s1.5 7 4 10"></path>
+                </svg>
+              </div>
+              <div>
+                <h3>Languages</h3>
+                <p>English, Ukrainian</p>
+              </div>
+            </div>
           </div>
 
           <div className="social-links">

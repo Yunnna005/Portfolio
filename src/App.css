@@ -1,3 +1,7 @@
+body {
+  background: var(--background-color);
+}
+
 .content-wrapper {
   position: relative;
   overflow: hidden;
