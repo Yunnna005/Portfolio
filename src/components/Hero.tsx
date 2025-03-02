@@ -2,10 +2,14 @@ import Skills from "./Skills";
 
 export default function Hero() {
   return (
-    <div className="hero">
+    <div className="hero" id="about">
       <div className="hero-content">
         <h1>Hi, I'm Anna</h1>
-        <p>Frontend Developer</p>
+        <p>
+          Computing student specializing in software development and game
+          design. I create robust applications and immersive interactive
+          experiences with equal passion for code quality and user engagement.
+        </p>
       </div>
       <div className="hero-skills">
         <Skills />

@@ -1,0 +1,445 @@
+/* Main project section styles */
+.projects-section {
+  margin: 8rem 0;
+}
+
+/* Filter button styles */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.filter-buttons button {
+  background: #e4eaff;
+  border: 2px solid #2c5282;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #2c5282;
+  transition: all 0.3s ease;
+}
+
+.filter-buttons button.active {
+  background: #2c5282;
+  color: white;
+}
+
+.filter-buttons button:hover {
+  background: #d1c4e9;
+}
+
+/* Timeline styles */
+.timeline-container {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-line {
+  width: 80px;
+  position: relative;
+  margin-right: 2rem;
+}
+
+.timeline-line::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 50%;
+  width: 3px;
+  background: #b39ddb;
+  transform: translateX(-50%);
+}
+
+.timeline-point {
+  width: 100%;
+  height: 350px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.point-inner {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #b39ddb;
+  box-shadow: 0 0 0 5px rgba(179, 157, 219, 0.3),
+    0 0 15px rgba(179, 157, 219, 0.5);
+  position: relative;
+  z-index: 2;
+}
+
+/* Project list styles */
+.projects-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* Project card styles */
+.project-card {
+  position: relative;
+}
+
+.project-shape {
+  background: white;
+  border-radius: 30px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(126, 87, 194, 0.15),
+    0 5px 10px rgba(166, 144, 219, 0.1),
+    inset 0 -4px 8px rgba(255, 255, 255, 0.7),
+    inset 0 4px 8px rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 1;
+}
+
+.project-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.project-content h3 {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  margin: 0 0 1rem 0;
+}
+
+.project-content p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--foreground-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Image styles */
+.project-image-container {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-image:hover {
+  transform: scale(1.05);
+}
+
+.image-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.image-dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.image-dot:first-child {
+  background: white;
+}
+
+/* Tag styles */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  background: rgba(126, 87, 194, 0.1);
+  color: #7e57c2;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-weight: 500;
+}
+
+/* Project action styles */
+.project-actions {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.project-link,
+.learn-more-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.project-link {
+  background: #7e57c2;
+  color: white;
+  border: none;
+  flex: 1;
+}
+
+.project-link:hover {
+  background: #6a4caf;
+  transform: translateY(-2px);
+}
+
+.learn-more-btn {
+  background: white;
+  color: #7e57c2;
+  border: 2px solid #7e57c2;
+  flex: 1;
+}
+
+.learn-more-btn:hover {
+  background: rgba(126, 87, 194, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 2.5rem;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-content h3 {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin: 0 0 1.5rem 0;
+}
+
+/* Modal image gallery styles */
+.modal-image-section {
+  margin-bottom: 2rem;
+}
+
+.modal-image-container {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.image-nav-btn {
+  background: rgba(126, 87, 194, 0.1);
+  color: #7e57c2;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.image-nav-btn:hover {
+  background: rgba(126, 87, 194, 0.2);
+}
+
+.image-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background: rgba(126, 87, 194, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background: #7e57c2;
+}
+
+/* Modal details styles */
+.modal-details {
+  margin-top: 1.5rem;
+}
+
+.modal-details p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #4a4a4a;
+}
+
+.modal-link {
+  display: inline-block;
+  width: auto;
+  padding: 0.8rem 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline-container {
+    flex-direction: column;
+  }
+
+  .timeline-line {
+    width: 100%;
+    height: 80px;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-line::before {
+    top: 50%;
+    bottom: auto;
+    left: 15px;
+    right: 15px;
+    width: auto;
+    height: 3px;
+    transform: translateY(-50%);
+  }
+
+  .timeline-point {
+    width: 250px;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .project-actions {
+    flex-direction: column;
+  }
+}
+.third-project-container {
+  position: relative; /* Create a positioning context for the overlay */
+}
+
+.third-project-container {
+  position: relative; /* Create a positioning context for the overlay */
+  height: 200px; /* Set a fixed height for the container */
+  overflow: hidden; /* Hide overflow to only show part of the project */
+}
+
+.project-wrapper.blurred {
+  filter: blur(5px); /* Apply blur effect to the project card */
+  transition: filter 0.3s; /* Smooth transition for the blur effect */
+  height: 100%; /* Ensure the project card takes full height of the container */
+}
+
+.third-project-overlay {
+  position: absolute; /* Position the overlay absolutely */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; /* Set height to half of the container */
+  background: linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(255, 255, 255, 0.8) 70%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 20px;
+  pointer-events: auto; /* Allow interaction with the button */
+}
+
+.see-more-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Ensure the button is on top */
+  transition: background-color 0.3s, transform 0.2s;
+  pointer-events: auto; /* Ensure the button can be clicked */
+}
+
+.see-more-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.see-more-btn:active {
+  transform: scale(0.98);
+}

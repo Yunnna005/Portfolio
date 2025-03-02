@@ -20,7 +20,7 @@ export default function ExperienceEducation() {
   ];
 
   return (
-    <section>
+    <section id="experience">
       <h2>Experience</h2>
       <div className="experience-list">
         {experience.map((exp, index) => (
@@ -34,7 +34,7 @@ export default function ExperienceEducation() {
         ))}
       </div>
 
-      <h2>Education</h2>
+      <h2 id="education">Education</h2>
       <div className="education-list">
         {education.map((edu, index) => (
           <div key={index} className="education-item">
