@@ -16,6 +16,7 @@ type SkillGroups = {
 
 export default function Skills() {
   const [activeGroup, setActiveGroup] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const skillGroups: SkillGroups = {
     "Software Development": {
@@ -86,6 +87,21 @@ export default function Skills() {
     },
   };
 
+  const handleGroupClick = (group: string) => {
+    if (activeGroup === group) {
+      setActiveGroup(null);
+      setIsModalOpen(false);
+    } else {
+      setActiveGroup(group);
+      setIsModalOpen(true);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setActiveGroup(null);
+  };
+
   return (
     <section className="skills-section">
       <h2>Skills</h2>
@@ -94,29 +110,40 @@ export default function Skills() {
           <button
             key={group}
             className={`group-button ${activeGroup === group ? "active" : ""}`}
-            onClick={() => setActiveGroup(activeGroup === group ? null : group)}
+            onClick={() => handleGroupClick(group)}
           >
             {group}
           </button>
         ))}
       </div>
 
-      <div className="skills-container">
-        {activeGroup &&
-          skillGroups[activeGroup].sections.map((section) => (
-            <div key={section.title} className="skill-section">
-              <h3>{section.title}</h3>
-              <div className="skill-grid">
-                {section.skills.map((skill) => (
-                  <div className="skill-item" key={skill.name}>
-                    <img src={skill.icon} alt={skill.name} />
-                    <span>{skill.name}</span>
-                  </div>
-                ))}
-              </div>
+      {isModalOpen && activeGroup && (
+        <div className="skills-modal-overlay" onClick={closeModal}>
+          <div className="skills-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>{activeGroup}</h2>
+              <button className="close-button" onClick={closeModal}>
+                ×
+              </button>
             </div>
-          ))}
-      </div>
+            <div className="modal-content">
+              {skillGroups[activeGroup].sections.map((section) => (
+                <div key={section.title} className="skill-section">
+                  <h3>{section.title}</h3>
+                  <div className="skill-grid">
+                    {section.skills.map((skill) => (
+                      <div className="skill-item" key={skill.name}>
+                        <img src={skill.icon} alt={skill.name} />
+                        <span>{skill.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
