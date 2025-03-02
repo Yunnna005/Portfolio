@@ -1,9 +1,14 @@
+import Skills from "./Skills";
+
 export default function Hero() {
   return (
     <div className="hero">
       <div className="hero-content">
         <h1>Hi, I'm Anna</h1>
         <p>Frontend Developer</p>
+      </div>
+      <div className="hero-skills">
+        <Skills />
       </div>
       <div className="wave">
         <svg

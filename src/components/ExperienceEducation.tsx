@@ -20,7 +20,7 @@ export default function ExperienceEducation() {
   ];
 
   return (
-    <section className="experience-education">
+    <section>
       <h2>Experience</h2>
       <div className="experience-list">
         {experience.map((exp, index) => (

@@ -32,10 +32,9 @@ export default function Projects() {
   );
 
   return (
-    <section className="projects-section">
+    <section>
       <h2>My Projects</h2>
 
-      {/* Filter Buttons */}
       <div className="filter-buttons">
         <button
           className={
@@ -65,15 +64,8 @@ export default function Projects() {
         <div className="projects-list">
           {filteredProjects.map((project, index) => (
             <div className="project-card" key={index}>
-              <div className="cloud-shape">
-                <div className="cloud-bump bump1"></div>
-                <div className="cloud-bump bump2"></div>
-                <div className="cloud-bump bump3"></div>
-                <div className="cloud-bump bump4"></div>
-                <div className="cloud-bump bump5"></div>
-                <div className="cloud-bump bump6"></div>
-                <div className="cloud-bump bump7"></div>
-                <div className="cloud-content">
+              <div className="project-shape">
+                <div className="project-content">
                   <h3>{project.name}</h3>
                   <p>{project.description}</p>
                   <div className="project-tags">

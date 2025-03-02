@@ -32,7 +32,7 @@ export default function Skills() {
           skills: [
             { name: "Java", icon: "/icons/java.svg" },
             { name: "Python", icon: "/icons/python.svg" },
-            { name: "Csharp", icon: "/icons/csharp.svg" },
+            { name: "Csharp", icon: "/icons/CSharp.svg" },
             { name: "Dotnet", icon: "/icons/dotnet.svg" },
           ],
         },
@@ -87,7 +87,7 @@ export default function Skills() {
   };
 
   return (
-    <section className="skills">
+    <section className="skills-section">
       <h2>Skills</h2>
       <div className="skill-groups">
         {Object.keys(skillGroups).map((group) => (

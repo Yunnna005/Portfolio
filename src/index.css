@@ -6,24 +6,37 @@
     rgb(255, 255, 255) 0%,
     #e6f3ff 100%
   );
-  --foreground-color: #04050a;
+  --foreground-color: rgb(62, 64, 71);
   --primary-color: #5368b3;
   --secondary-color: #c3a6d8;
   --accent-color: #bd76c3;
-  --font-header: "Madimi One", sans-serif;
+  --font-title: "Madimi One", sans-serif;
   --font-body: "Mitr", sans-serif;
-  --text-color: rgb(0, 19, 80);
-  --header-color: rgba(255, 255, 255, 0.8);
+  --text-color-navbar: #2c5282;
+  --text-hover-color: #bd76c3;
+  --header-color: rgba(255, 255, 255, 0.93);
+  --border-color: rgba(0, 11, 114, 0.26);
 }
 
-h1,
+h1 {
+  font-family: var(--font-title);
+  color: rgb(236, 245, 255);
+  font-size: 3.5rem;
+  margin-bottom: 0;
+}
+
 h2 {
-  font-family: var(--font-header);
+  font-family: var(--font-title);
   color: #2c5282;
   text-align: center;
-  letter-spacing: 2px;
   position: relative;
   z-index: 1;
+  font-size: 1.6rem;
+}
+
+p {
+  color: var(--foreground-color);
+  font-size: 1rem;
 }
 
 body {
@@ -37,4 +50,11 @@ body {
   justify-content: flex-start;
   gap: 8em;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+section {
+  margin: 0 0 70px 0;
 }
