@@ -136,7 +136,7 @@ export default function Projects() {
       />
 
       <div className="timeline-container">
-        <TimelineDots count={showAll ? filteredProjects.length:2} />
+        <TimelineDots count={showAll ? filteredProjects.length : 2} />
 
         <div className="projects-list">
           {/* First two projects shown normally */}

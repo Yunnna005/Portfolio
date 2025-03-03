@@ -21,7 +21,7 @@ export default function ImageGallery({ images, name }: ImageGalleryProps) {
       <div className="modal-image-container">
         <img
           src={images[currentImageIndex]}
-          alt={`${name} screenshot ${currentImageIndex + 1}`}
+          alt={`${name} ${currentImageIndex + 1}`}
           className="modal-image"
         />
       </div>

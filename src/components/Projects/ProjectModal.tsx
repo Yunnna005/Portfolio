@@ -9,17 +9,18 @@ interface ProjectModalProps {
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   return (
-    <div className="project-modal-overlay">
-      <div className="project-modal">
+    <div className="project-modal-overlay" onClick={onClose}>
+      <div className="project-modal" onClick={(e) => e.stopPropagation()}>
         <button className="close-btn" onClick={onClose}>
           &times;
         </button>
         
         <h2>{project.name}</h2>
+        <p>{project.description}</p>
         
         <div className="project-images">
           {project.images.map((image, index) => (
-            <img key={index} src={image} alt={`${project.name} screenshot ${index + 1}`} />
+            <img key={index} src={image} alt={`${project.name} ${index + 1}`} />
           ))}
         </div>
         
@@ -30,10 +31,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             </span>
           ))}
         </div>
-        
-        <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
-          View Project
-        </a>
         
         <div className="project-detailed-info">
           {/* Use ReactMarkdown to render the detailed content */}
@@ -46,9 +43,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             <p>{project.detailedInfo}</p>
           )}
         </div>
+
+        <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+          View Project
+        </a>
       </div>
     </div>
   );
 };
 
 export default ProjectModal;
+
