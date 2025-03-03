@@ -13,22 +13,19 @@ export interface Project {
   link: string;
   images: string[];
   detailedInfo: string;
-  // Raw markdown content for rendering
+  date: string; // Add date property
   markdownContent?: string;
 }
 
 // Helper function to parse markdown files
 async function fetchProjectsFromMarkdown(): Promise<Project[]> {
   try {
-    // Import all markdown files from the projects directory
-    // For Vite, this syntax works with vite-plugin-glob or similar
     const markdownModules = import.meta.glob('/src/projects/*.md', { as: 'raw' });
     const projects: Project[] = [];
     
     for (const path in markdownModules) {
       const markdown = await markdownModules[path]();
       const project = parseMarkdownToProject(markdown);
-      // Store the original markdown for rendering with react-markdown
       project.markdownContent = markdown;
       projects.push(project);
     }
@@ -44,37 +41,31 @@ async function fetchProjectsFromMarkdown(): Promise<Project[]> {
 function parseMarkdownToProject(markdown: string): Project {
   const project: Partial<Project> = {};
   
-  // Extract the title (first # heading)
   const titleMatch = markdown.match(/^# (.+)$/m);
   if (titleMatch) {
     project.name = titleMatch[1].trim();
   }
   
-  // Extract description
   const descriptionMatch = markdown.match(/## Description\s*\n([^\n#]+)/);
   if (descriptionMatch) {
     project.description = descriptionMatch[1].trim();
   }
   
-  // Extract tags
   const tagsMatch = markdown.match(/## Tags\s*\n([^\n#]+)/);
   if (tagsMatch) {
     project.tags = tagsMatch[1].split(',').map(tag => tag.trim());
   }
   
-  // Extract category
   const categoryMatch = markdown.match(/## Category\s*\n([^\n#]+)/);
   if (categoryMatch) {
     project.category = categoryMatch[1].trim();
   }
   
-  // Extract link
   const linkMatch = markdown.match(/## Link\s*\n([^\n#]+)/);
   if (linkMatch) {
     project.link = linkMatch[1].trim();
   }
   
-  // Extract images
   const imagesSection = markdown.match(/## Images\s*\n((?:[^\n#]+\n)+)/);
   if (imagesSection) {
     const imageLines = imagesSection[1].trim().split('\n');
@@ -83,10 +74,16 @@ function parseMarkdownToProject(markdown: string): Project {
     project.images = [];
   }
   
-  // Extract detailed info (everything after ## Detailed Info)
   const detailedInfoMatch = markdown.match(/## Detailed Info\s*\n([\s\S]+)(?:$|(?=\n## ))/);
   if (detailedInfoMatch) {
     project.detailedInfo = detailedInfoMatch[1].trim();
+  }
+  
+  const dateMatch = markdown.match(/## Date\s*\n([^\n#]+)/);
+  if (dateMatch) {
+    project.date = dateMatch[1].trim();
+  } else {
+    project.date = "1970-01-01"; // Default date if not specified
   }
   
   return project as Project;
@@ -100,7 +97,6 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch projects when component mounts
     const loadProjects = async () => {
       const projectData = await fetchProjectsFromMarkdown();
       setProjects(projectData);
@@ -110,9 +106,9 @@ export default function Projects() {
     loadProjects();
   }, []);
 
-  const filteredProjects = projects.filter(
-    (project) => project.category === selectedCategory
-  );
+  const filteredProjects = projects
+    .filter((project) => project.category === selectedCategory)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort projects by date
 
   const openProjectDetails = (project: Project) => {
     setActiveProject(project);

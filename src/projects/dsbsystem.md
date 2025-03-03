@@ -1,5 +1,8 @@
 # Dance Studio Booking System
 
+## Date 
+2024-05-10
+
 ## Description
 Developed a robust booking system for a dance studio, providing users with a logging in, creating accounts, booking classes, and processing payments(demo). The project spanned from September 2023 to May 2024.
 

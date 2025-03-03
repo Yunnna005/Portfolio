@@ -250,7 +250,6 @@
   max-height: 85vh;
   overflow-y: auto;
   position: relative;
-  padding: 2.5rem;
 }
 
 .close-modal {

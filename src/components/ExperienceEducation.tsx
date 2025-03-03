@@ -2,20 +2,20 @@ export default function ExperienceEducation() {
   const experience = [
     {
       role: "Frontend Developer Intern",
-      company: "Tech Startup",
+      company: "Ailtir",
       duration: "Jan 2024 - Present",
       description:
-        "Assisting in UI development using React and TypeScript. Collaborating with the design team to enhance user experience.",
+        "Contributed to AI integration, frontend development, and troubleshooting, while collaborating with cross-functional teams to enhance internal processes using AI tools.",
     },
   ];
 
   const education = [
     {
       degree: "Bachelor's in Computer Science",
-      university: "XYZ University",
+      university: "Munster Technological University (MTU)",
       duration: "2022 - Present",
       description:
-        "Currently pursuing studies in software development, web technologies, and UI/UX design.",
+        "Currently pursuing studies in Computer Science, with a focus on games development.",
     },
   ];
 

@@ -26,6 +26,8 @@ export default function Skills() {
           skills: [
             { name: "React", icon: "/icons/react.svg" },
             { name: "TypeScript", icon: "/icons/typescript.svg" },
+            { name: "CSS", icon: "/icons/css.svg" },
+            { name: "HTML", icon: "/icons/html.svg" },
           ],
         },
         {
@@ -62,6 +64,13 @@ export default function Skills() {
     "Tools & Technologies": {
       sections: [
         {
+          title: "Automation",
+          skills: [
+            { name: "Zapier", icon: "/icons/zapier.svg" },
+            { name: "Make.com", icon: "/icons/make.svg" },
+          ],
+        },
+        {
           title: "Cloud & DevOps",
           skills: [
             { name: "Azure", icon: "/icons/azure.svg" },
@@ -81,6 +90,7 @@ export default function Skills() {
           skills: [
             { name: "GitHub", icon: "/icons/github.svg" },
             { name: "Jira", icon: "/icons/jira.svg" },
+            { name: "Trello", icon: "/icons/trello.svg" },
           ],
         },
       ],

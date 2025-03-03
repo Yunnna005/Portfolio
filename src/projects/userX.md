@@ -1,5 +1,8 @@
 # UserX (Group Project)
 
+## Date
+2025-02-22
+
 ## Description
 Built during HackIreland 2025, a 30-hour hackathon in Dublin, this platform helps students and indie developers easily find testers and collect quality feedback.
 

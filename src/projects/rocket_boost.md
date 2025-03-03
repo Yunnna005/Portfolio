@@ -1,5 +1,8 @@
 # Rocket Boost (Level Design)
 
+## Date
+2025-01-10
+
 ## Description
 In this project, I focused on practicing level design, creating engaging and challenging environments for a fast-paced rocket-powered platformer. My work involved designing layouts that balanced difficulty and flow, placing obstacles, checkpoints, to guide player progression and encourage exploration.
 
