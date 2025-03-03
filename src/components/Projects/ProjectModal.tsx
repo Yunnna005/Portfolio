@@ -1,36 +1,54 @@
-import TagList from "./TagList";
-import ImageGallery from "./ImageGallery";
-import { Project } from "./Projects";
+import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import { Project } from './Projects';
 
 interface ProjectModalProps {
   project: Project;
   onClose: () => void;
 }
 
-export default function ProjectModal({ project, onClose }: ProjectModalProps) {
+const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="close-modal" onClick={onClose}>
-          ×
+    <div className="project-modal-overlay">
+      <div className="project-modal">
+        <button className="close-btn" onClick={onClose}>
+          &times;
         </button>
-        <h3>{project.name}</h3>
-
-        <ImageGallery images={project.images} name={project.name} />
-
-        <div className="modal-details">
-          <p>{project.detailedInfo}</p>
-          <TagList tags={project.tags} />
-          <a
-            href={project.link}
-            className="project-link modal-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit Project
-          </a>
+        
+        <h2>{project.name}</h2>
+        
+        <div className="project-images">
+          {project.images.map((image, index) => (
+            <img key={index} src={image} alt={`${project.name} screenshot ${index + 1}`} />
+          ))}
+        </div>
+        
+        <div className="project-tags">
+          {project.tags.map((tag, index) => (
+            <span key={index} className="tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+        
+        <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+          View Project
+        </a>
+        
+        <div className="project-detailed-info">
+          {/* Use ReactMarkdown to render the detailed content */}
+          {project.markdownContent ? (
+            <ReactMarkdown>
+              {/* Extract only the Detailed Info section */}
+              {project.markdownContent.split('## Detailed Info')[1] || project.detailedInfo}
+            </ReactMarkdown>
+          ) : (
+            <p>{project.detailedInfo}</p>
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default ProjectModal;

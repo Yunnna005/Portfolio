@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 import FilterButtons from "./FilterButtons";
@@ -13,68 +13,102 @@ export interface Project {
   link: string;
   images: string[];
   detailedInfo: string;
+  // Raw markdown content for rendering
+  markdownContent?: string;
+}
+
+// Helper function to parse markdown files
+async function fetchProjectsFromMarkdown(): Promise<Project[]> {
+  try {
+    // Import all markdown files from the projects directory
+    // For Vite, this syntax works with vite-plugin-glob or similar
+    const markdownModules = import.meta.glob('/src/projects/*.md', { as: 'raw' });
+    const projects: Project[] = [];
+    
+    for (const path in markdownModules) {
+      const markdown = await markdownModules[path]();
+      const project = parseMarkdownToProject(markdown);
+      // Store the original markdown for rendering with react-markdown
+      project.markdownContent = markdown;
+      projects.push(project);
+    }
+    
+    return projects;
+  } catch (error) {
+    console.error("Error fetching project files:", error);
+    return [];
+  }
+}
+
+// Parse markdown content to a Project object
+function parseMarkdownToProject(markdown: string): Project {
+  const project: Partial<Project> = {};
+  
+  // Extract the title (first # heading)
+  const titleMatch = markdown.match(/^# (.+)$/m);
+  if (titleMatch) {
+    project.name = titleMatch[1].trim();
+  }
+  
+  // Extract description
+  const descriptionMatch = markdown.match(/## Description\s*\n([^\n#]+)/);
+  if (descriptionMatch) {
+    project.description = descriptionMatch[1].trim();
+  }
+  
+  // Extract tags
+  const tagsMatch = markdown.match(/## Tags\s*\n([^\n#]+)/);
+  if (tagsMatch) {
+    project.tags = tagsMatch[1].split(',').map(tag => tag.trim());
+  }
+  
+  // Extract category
+  const categoryMatch = markdown.match(/## Category\s*\n([^\n#]+)/);
+  if (categoryMatch) {
+    project.category = categoryMatch[1].trim();
+  }
+  
+  // Extract link
+  const linkMatch = markdown.match(/## Link\s*\n([^\n#]+)/);
+  if (linkMatch) {
+    project.link = linkMatch[1].trim();
+  }
+  
+  // Extract images
+  const imagesSection = markdown.match(/## Images\s*\n((?:[^\n#]+\n)+)/);
+  if (imagesSection) {
+    const imageLines = imagesSection[1].trim().split('\n');
+    project.images = imageLines.filter(line => line.trim() !== '');
+  } else {
+    project.images = [];
+  }
+  
+  // Extract detailed info (everything after ## Detailed Info)
+  const detailedInfoMatch = markdown.match(/## Detailed Info\s*\n([\s\S]+)(?:$|(?=\n## ))/);
+  if (detailedInfoMatch) {
+    project.detailedInfo = detailedInfoMatch[1].trim();
+  }
+  
+  return project as Project;
 }
 
 export default function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState<string>(
-    "Software Development"
-  );
+  const [selectedCategory, setSelectedCategory] = useState<string>("Software Development");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
-  const [showAll, setShowAll] = useState(false); // To control visibility of extra projects
+  const [showAll, setShowAll] = useState(false);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const projects: Project[] = [
-    {
-      name: "Portfolio Website",
-      description: "A personal portfolio built with React and TypeScript.",
-      tags: ["React", "TypeScript", "CSS"],
-      category: "Software Development",
-      link: "https://portfolio-example.com",
-      images: [
-        "/api/placeholder/500/300",
-        "/api/placeholder/500/300",
-        "/api/placeholder/500/300",
-      ],
-      detailedInfo:
-        "This portfolio website was built using React and TypeScript. It features a responsive design, dark/light mode toggle, and smooth animations. The site is optimized for performance and accessibility, with a 95+ Lighthouse score across all categories. The project structure utilizes component-based architecture with reusable UI elements.",
-    },
-    {
-      name: "Weather App",
-      description:
-        "A cute weather app with API integration and animated icons.",
-      tags: ["JavaScript", "API", "Animation"],
-      category: "Software Development",
-      link: "https://weather-app-example.com",
-      images: ["/api/placeholder/500/300", "/api/placeholder/500/300"],
-      detailedInfo:
-        "This weather application connects to the OpenWeatherMap API to provide real-time weather data. Features include animated weather icons that change based on conditions, a 5-day forecast, location search, and temperature unit conversion. The app was built with vanilla JavaScript and uses CSS animations for the weather illustrations.",
-    },
-    {
-      name: "Weather App",
-      description:
-        "A cute weather app with API integration and animated icons.",
-      tags: ["JavaScript", "API", "Animation"],
-      category: "Software Development",
-      link: "https://weather-app-example.com",
-      images: ["/api/placeholder/500/300", "/api/placeholder/500/300"],
-      detailedInfo:
-        "This weather application connects to the OpenWeatherMap API to provide real-time weather data. Features include animated weather icons that change based on conditions, a 5-day forecast, location search, and temperature unit conversion. The app was built with vanilla JavaScript and uses CSS animations for the weather illustrations.",
-    },
-    {
-      name: "Game Prototype",
-      description: "A 2D platformer made in Unity.",
-      tags: ["Unity", "C#", "Game Dev"],
-      category: "Games Development",
-      link: "https://game-prototype-example.com",
-      images: [
-        "/api/placeholder/500/300",
-        "/api/placeholder/500/300",
-        "/api/placeholder/500/300",
-        "/api/placeholder/500/300",
-      ],
-      detailedInfo:
-        "This 2D platformer prototype was developed in Unity using C#. It features pixel art graphics, custom character controller with smooth movement physics, collectible items, and environmental hazards. The game includes three playable levels with unique mechanics and a simple save system. Audio effects and background music were created using FMOD integration.",
-    },
-  ];
+  useEffect(() => {
+    // Fetch projects when component mounts
+    const loadProjects = async () => {
+      const projectData = await fetchProjectsFromMarkdown();
+      setProjects(projectData);
+      setLoading(false);
+    };
+    
+    loadProjects();
+  }, []);
 
   const filteredProjects = projects.filter(
     (project) => project.category === selectedCategory
@@ -88,6 +122,10 @@ export default function Projects() {
     setActiveProject(null);
   };
 
+  if (loading) {
+    return <div className="loading">Loading projects...</div>;
+  }
+
   return (
     <section className="projects-section" id="projects">
       <h2>My Projects</h2>
@@ -98,7 +136,7 @@ export default function Projects() {
       />
 
       <div className="timeline-container">
-        <TimelineDots count={showAll ? filteredProjects.length : 2} />
+        <TimelineDots count={showAll ? filteredProjects.length:2} />
 
         <div className="projects-list">
           {/* First two projects shown normally */}
@@ -145,7 +183,10 @@ export default function Projects() {
       </div>
 
       {activeProject && (
-        <ProjectModal project={activeProject} onClose={closeProjectDetails} />
+        <ProjectModal 
+          project={activeProject} 
+          onClose={closeProjectDetails} 
+        />
       )}
     </section>
   );
