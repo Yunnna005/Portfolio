@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "emailjs-com";
 
 export default function ContactMe() {
   const [formData, setFormData] = useState({
@@ -27,10 +28,12 @@ export default function ContactMe() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Simulate form submission
     try {
-      // Replace with actual form submission logic
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const serviceID = "service_fy9l4aj";
+      const templateID = "template_qva1g1b";
+      const userID = "BLHHn1yRmVNrHvv7K";
+
+      await emailjs.send(serviceID, templateID, formData, userID);
       setSubmitStatus("success");
       setFormData({
         name: "",
@@ -38,7 +41,7 @@ export default function ContactMe() {
         subject: "",
         message: "",
       });
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
