@@ -534,7 +534,7 @@ html,body {
   color: var(--text-color-navbar);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1080px) {
   .nav {
     padding: 0 1rem;
   }
@@ -589,8 +589,8 @@ html,body {
   .hero{
     flex-direction: column;
     align-items: flex-start;
-    height: 80vh;
-    padding-top: 20%;
+    height: 100vh;
+    padding-left: 4rem;
   }
 
   .hero-content {
@@ -642,7 +642,7 @@ html,body {
   .experience-list,
   .education-list {
     gap: 1rem;
-    margin: 0 10rem;
+    margin: 0 5rem;
   }
 
   .experience-item p,
@@ -678,14 +678,14 @@ html,body {
     display: none;
   }
   .project-wrapper {
-   margin: 0 7rem;
+   margin: 0 4rem;
   } 
   .project-card {
     width: 100% !important;
   }
   .third-project-overlay {
     margin: 0 7rem;
-    width: 65% !important;
+    width: 55% !important;
   }
   .contact-container {
     flex-direction: column;

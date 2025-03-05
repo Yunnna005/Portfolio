@@ -16,7 +16,7 @@ Software Development
 https://github.com/Yunnna005/Big_Adventure
 
 ## Images
-../images/planify.png
+/Portfolio/images/planify.png
 
 ## Detailed Info
 

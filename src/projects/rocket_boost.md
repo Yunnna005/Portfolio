@@ -16,9 +16,9 @@ Games Development
 https://yunaaa-5196.itch.io/rocket-booster
 
 ## Images
-../images/rocket_boost/lvl1.png
-../images/rocket_boost/lvl2.png
-../images/rocket_boost/lvl3.png
+/Portfolio/images/rocket_boost/lvl1.png
+/Portfolio/images/rocket_boost/lvl2.png
+/Portfolio/images/rocket_boost/lvl3.png
 
 ## Detailed Info
 ### Try it: [Itch.io Rocket Boost](https://yunaaa-5196.itch.io/rocket-booster)

@@ -16,7 +16,7 @@ Games Development
 https://portfolio-example.com
 
 ## Images
-../images/maya/FlowerModel.png
+/Portfolio/images/maya/FlowerModel.png
 
 ## Detailed Info
 ## Model

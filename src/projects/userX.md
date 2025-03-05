@@ -16,10 +16,10 @@ Software Development
 https://devpost.com/software/user-x
 
 ## Images
-../images/userx/userX_1.png
-../images/userx/userX_2.png
-../images/userx/userX_3.png
-../images/userx/userX_4.png
+/Portfolio/images/userx/userX_1.png
+/Portfolio/images/userx/userX_2.png
+/Portfolio/images/userx/userX_3.png
+/Portfolio/images/userx/userX_4.png
 
 ## Detailed Info
 My Role: Frontend Development

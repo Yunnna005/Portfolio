@@ -16,9 +16,9 @@ Software Development
 https://github.com/Yunnna005/DanceStudioBookingSystem
 
 ## Images
-../images/dsbsystem/Start_page.png
-../images/dsbsystem/AdminView_pages.png
-../images/dsbsystem/MemberView_pages.png
+/Portfolio/images/dsbsystem/Start_page.png
+/Portfolio/images/dsbsystem/AdminView_pages.png
+/Portfolio/images/dsbsystem/MemberView_pages.png
 
 ## Detailed Info
 › Features

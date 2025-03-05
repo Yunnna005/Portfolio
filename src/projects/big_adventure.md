@@ -16,10 +16,10 @@ Games Development
 https://github.com/Yunnna005/Big_Adventure
 
 ## Images
-../images/big_adventure/menu.png
-../images/big_adventure/start.png
-../images/big_adventure/selling.png
-../images/big_adventure/end.png
+/Portfolio/images/big_adventure/menu.png
+/Portfolio/images/big_adventure/start.png
+/Portfolio/images/big_adventure/selling.png
+/Portfolio/images/big_adventure/end.png
 
 ## Detailed Info
 › Features
