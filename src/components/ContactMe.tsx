@@ -129,7 +129,7 @@ export default function ContactMe() {
 
           <div className="social-links">
             <a
-              href="https://github.com/"
+              href="https://github.com/Yunnna005"
               className="social-link"
               target="_blank"
               rel="noopener noreferrer"
@@ -147,7 +147,7 @@ export default function ContactMe() {
               </svg>
             </a>
             <a
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/in/anna-kovalenko-cs/"
               className="social-link"
               target="_blank"
               rel="noopener noreferrer"

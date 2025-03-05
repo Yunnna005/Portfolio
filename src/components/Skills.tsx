@@ -91,6 +91,7 @@ export default function Skills() {
             { name: "GitHub", icon: "/Portfolio/icons/github.svg" },
             { name: "Jira", icon: "/Portfolio/icons/jira.svg" },
             { name: "Trello", icon: "/Portfolio/icons/trello.svg" },
+            { name: "Slack", icon: "/Portfolio/icons/slack.svg" },
           ],
         },
       ],
