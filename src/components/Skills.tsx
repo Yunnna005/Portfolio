@@ -24,27 +24,27 @@ export default function Skills() {
         {
           title: "Frontend Development",
           skills: [
-            { name: "React", icon: "/icons/react.svg" },
-            { name: "TypeScript", icon: "/icons/typescript.svg" },
-            { name: "CSS", icon: "/icons/css.svg" },
-            { name: "HTML", icon: "/icons/html.svg" },
+            { name: "React", icon: "/Portfolio/icons/react.svg" },
+            { name: "TypeScript", icon: "/Portfolio/icons/typescript.svg" },
+            { name: "CSS", icon: "/Portfolio/icons/css.svg" },
+            { name: "HTML", icon: "/Portfolio/icons/html.svg" },
           ],
         },
         {
           title: "Backend Development",
           skills: [
-            { name: "Java", icon: "/icons/java.svg" },
-            { name: "Python", icon: "/icons/python.svg" },
-            { name: "Csharp", icon: "/icons/CSharp.svg" },
-            { name: "Dotnet", icon: "/icons/dotnet.svg" },
+            { name: "Java", icon: "/Portfolio/icons/java.svg" },
+            { name: "Python", icon: "/Portfolio/icons/python.svg" },
+            { name: "Csharp", icon: "/Portfolio/icons/CSharp.svg" },
+            { name: "Dotnet", icon: "/Portfolio/icons/dotnet.svg" },
           ],
         },
         {
           title: "Database Management",
           skills: [
-            { name: "Cockroachdb", icon: "/icons/cockroachdb.svg" },
-            { name: "Mariadb", icon: "/icons/mariadb.svg" },
-            { name: "Mysql", icon: "/icons/mysql.svg" },
+            { name: "Cockroachdb", icon: "/Portfolio/icons/cockroachdb.svg" },
+            { name: "Mariadb", icon: "/Portfolio/icons/mariadb.svg" },
+            { name: "Mysql", icon: "/Portfolio/icons/mysql.svg" },
           ],
         },
       ],
@@ -53,11 +53,11 @@ export default function Skills() {
       sections: [
         {
           title: "Game Engines",
-          skills: [{ name: "Unity", icon: "/icons/unity.svg" }],
+          skills: [{ name: "Unity", icon: "/Portfolio/icons/unity.svg" }],
         },
         {
           title: "3D Modeling",
-          skills: [{ name: "Maya", icon: "/icons/maya.svg" }],
+          skills: [{ name: "Maya", icon: "/Portfolio/icons/maya.svg" }],
         },
       ],
     },
@@ -66,31 +66,31 @@ export default function Skills() {
         {
           title: "Automation",
           skills: [
-            { name: "Zapier", icon: "/icons/zapier.svg" },
-            { name: "Make.com", icon: "/icons/make.svg" },
+            { name: "Zapier", icon: "/Portfolio/icons/zapier.svg" },
+            { name: "Make.com", icon: "/Portfolio/icons/make.svg" },
           ],
         },
         {
           title: "Cloud & DevOps",
           skills: [
-            { name: "Azure", icon: "/icons/azure.svg" },
-            { name: "Docker", icon: "/icons/docker.svg" },
+            { name: "Azure", icon: "/Portfolio/icons/azure.svg" },
+            { name: "Docker", icon: "/Portfolio/icons/docker.svg" },
           ],
         },
         {
           title: "Development Environment",
           skills: [
-            { name: "VSCode", icon: "/icons/visual_studio_code.svg" },
-            { name: "VisualStudio", icon: "/icons/visual_studio.svg" },
-            { name: "Jetbrains", icon: "/icons/jetbrains.svg" },
+            { name: "VSCode", icon: "/Portfolio/icons/visual_studio_code.svg" },
+            { name: "VisualStudio", icon: "/Portfolio/icons/visual_studio.svg" },
+            { name: "Jetbrains", icon: "/Portfolio/icons/jetbrains.svg" },
           ],
         },
         {
           title: "Project Management",
           skills: [
-            { name: "GitHub", icon: "/icons/github.svg" },
-            { name: "Jira", icon: "/icons/jira.svg" },
-            { name: "Trello", icon: "/icons/trello.svg" },
+            { name: "GitHub", icon: "/Portfolio/icons/github.svg" },
+            { name: "Jira", icon: "/Portfolio/icons/jira.svg" },
+            { name: "Trello", icon: "/Portfolio/icons/trello.svg" },
           ],
         },
       ],
