@@ -666,4 +666,29 @@ html,body {
     font-size: 0.9rem;
   }
 
+  .projects-section { 
+    margin-top: 4rem !important;
+  }
+  .filter-buttons {
+    flex-direction: column;
+    margin:0 auto;
+    width: 40%;
+  }
+  .timeline-line {
+    display: none;
+  }
+  .project-wrapper {
+   margin: 0 7rem;
+  } 
+  .project-card {
+    width: 100% !important;
+  }
+  .third-project-overlay {
+    margin: 0 7rem;
+    width: 65% !important;
+  }
+  .contact-container {
+    flex-direction: column;
+    width: 70%;
+  }
 }
