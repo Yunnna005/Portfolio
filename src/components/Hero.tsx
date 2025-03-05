@@ -10,6 +10,9 @@ export default function Hero() {
           design. I create robust applications and immersive interactive
           experiences with equal passion for code quality and user engagement.
         </p>
+        <button className="cv-button" onClick={() => window.open('https://ittralee-my.sharepoint.com/:f:/g/personal/t00243622_365s_ittralee_ie/EsGHtuxZ_gBOnqhNRGl70fIBWvv80U-QHFuG2aaKV4kdxQ?e=GccKid', '_blank')}>
+          CV
+        </button>
       </div>
       <div className="hero-skills">
         <Skills />
