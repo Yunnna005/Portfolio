@@ -35,6 +35,5 @@ https://github.com/Yunnna005/Big_Adventure
 
 1. Designed immersive gameplay mechanics.
 1. Integrated graphics and animations for a compelling user experience.
-1. Developed complex AI for enemy interactions.
 1. Implemented a storyline and objectives to guide player progress.
 1. Implement friendly User Interface
