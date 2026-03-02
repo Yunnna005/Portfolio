@@ -10,7 +10,7 @@ export default function Hero() {
           design. I create robust applications and immersive interactive
           experiences with equal passion for code quality and user engagement.
         </p>
-        <button className="cv-button" onClick={() => window.open('https://drive.google.com/file/d/1pKMXbFdumc8R3TbL1RViKJPzNqN8zaCa/view?usp=sharing', '_blank')}>
+        <button className="cv-button" onClick={() => window.open('https://drive.google.com/file/d/1ucD6TVY6tzWtNZg3zF0_Hfp-vlHKQk2T/view?usp=sharing', '_blank')}>
           CV
         </button>
       </div>
