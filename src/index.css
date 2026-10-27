@@ -1,5 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Madimi+One&family=Mitr&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Madimi+One&family=Mitr&family=Onest:wght@400;500&family=Unbounded:wght@800&display=swap");
 
+/* Design direction tokens (see CLAUDE.md, "Design direction") */
+:root {
+  --bg: #0a0d14;
+  --surface: #131824;
+  --ink: #e9edf3;
+  --muted: #8891a1;
+  --accent: #5a9bfc;
+  --accent-ink: #0a0d14;
+
+  --font-display: "Unbounded", sans-serif;
+  --font-text: "Onest", sans-serif;
+
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --step-monument: clamp(3.5rem, 16vw, 16rem);
+}
+
+/* Legacy tokens: still used by the current components, delete after the restyle */
 :root {
   --background-color: linear-gradient(
     to bottom,
