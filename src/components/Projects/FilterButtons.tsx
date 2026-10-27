@@ -3,24 +3,27 @@ interface FilterButtonsProps {
   setSelectedCategory: (category: string) => void;
 }
 
+export const ALL_CATEGORIES = "All";
+
+const categories = [ALL_CATEGORIES, "Software Development", "Games Development"];
+
 export default function FilterButtons({
   selectedCategory,
   setSelectedCategory,
 }: FilterButtonsProps) {
   return (
-    <div className="filter-buttons">
-      <button
-        className={selectedCategory === "Software Development" ? "active" : ""}
-        onClick={() => setSelectedCategory("Software Development")}
-      >
-        Software Development
-      </button>
-      <button
-        className={selectedCategory === "Games Development" ? "active" : ""}
-        onClick={() => setSelectedCategory("Games Development")}
-      >
-        Games Development
-      </button>
+    <div className="filter-buttons" role="group" aria-label="Filter projects">
+      {categories.map((category) => (
+        <button
+          key={category}
+          type="button"
+          className="filter-button"
+          aria-pressed={selectedCategory === category}
+          onClick={() => setSelectedCategory(category)}
+        >
+          {category}
+        </button>
+      ))}
     </div>
   );
 }

@@ -1,35 +1,45 @@
-import Skills from "./Skills";
+import Clock from "./Clock";
+import DotGrid from "./DotGrid";
+
+const facts = [
+  "MSc Finance at UCC",
+  "BSc Computer Science, First Class Honours",
+  "Mallow, Ireland",
+];
 
 export default function Hero() {
   return (
-    <div className="hero" id="about">
-      <div className="hero-content">
-        <h1>Hi, I'm Anna</h1>
-        <p>
-          Computing student specializing in software development and game
-          design. I create robust applications and immersive interactive
-          experiences with equal passion for code quality and user engagement.
+    <section className="hero" id="about">
+      <div className="hero-text">
+        <h1 className="hero-headline">Hi, I’m Anna</h1>
+        <p className="hero-intro">
+          I'm doing an MSc in Corporate Finance at UCC after a first class
+          BSc in Computer Science. I build full-stack software with Python,
+          SQL and React, and I'm looking for roles in FinTech engineering,
+          FP&amp;A analytics and finance systems.
         </p>
-        <button className="cv-button" onClick={() => window.open('https://drive.google.com/file/d/1ucD6TVY6tzWtNZg3zF0_Hfp-vlHKQk2T/view?usp=sharing', '_blank')}>
-          CV
-        </button>
+        <div className="hero-actions">
+          <a
+            className="button-primary"
+            href={`${import.meta.env.BASE_URL}CV_AnnaKovalenko.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CV
+          </a>
+          <ul className="hero-facts">
+            {facts.map((fact) => (
+              <li key={fact} className="label">
+                {fact}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="hero-skills">
-        <Skills />
+      <div className="hero-panel theme-navy">
+        <Clock />
+        <DotGrid />
       </div>
-      <div className="wave">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,120 L0,0 Q600,160 1200,0 L1200,120 Z"
-            fill="rgb(255, 255, 255)"
-          ></path>
-        </svg>
-      </div>
-    </div>
+    </section>
   );
 }

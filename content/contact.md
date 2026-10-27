@@ -4,7 +4,7 @@
 Have a project in mind or want to collaborate? Feel free to reach out to me using the form or through the following channels:
 
 - Email: annakovalenko0050@gmail.com
-- Location: Ireland
+- Location: Mallow, Ireland
 - Languages: English, Ukrainian
 
 ## Social

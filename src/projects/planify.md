@@ -13,7 +13,7 @@ Cocroach DB, Azure DevOps, Pipelines
 Software Development
 
 ## Link
-https://github.com/Yunnna005/Big_Adventure
+https://portfolio-example.com
 
 ## Images
 /Portfolio/images/planify.png
