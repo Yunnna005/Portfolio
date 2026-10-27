@@ -6,6 +6,9 @@ type Entry = {
   organisation?: string;
   duration: string;
   description?: string;
+  points?: string[];
+  highlight?: string;
+  modules?: string[];
 };
 
 const experience: Entry[] = [
@@ -13,8 +16,11 @@ const experience: Entry[] = [
     title: "Software Development Intern",
     organisation: "Ailtir",
     duration: "Jan - Apr 2025",
-    description:
-      "Built and launched the company website in Framer in one week, with a Make.com automation that saves customer details to a database. Developed React and TypeScript components for an AI-powered tender and bid management platform. Worked with the management, marketing and design teams, picked up backend tasks and tracked sprint work in Jira.",
+    points: [
+      "Built and launched the company website in Framer in one week, with a Make.com automation that saves customer details to a database.",
+      "Developed React and TypeScript components for an AI-powered tender and bid management platform.",
+      "Worked with the management, marketing and design teams, picked up backend tasks and tracked sprint work in Jira.",
+    ],
   },
 ];
 
@@ -23,15 +29,27 @@ const education: Entry[] = [
     title: "MSc Finance (Corporate Finance)",
     organisation: "University College Cork (UCC)",
     duration: "2026 - Present",
-    description:
-      "Modules: Investments and Equity Valuation, Financial Analysis and Forecasting, Treasury and Risk Management, Python and Machine Learning for Finance, Capital Markets and Regulation and Compliance.",
+    modules: [
+      "Investments and Equity Valuation",
+      "Financial Analysis and Forecasting",
+      "Treasury and Risk Management",
+      "Python and Machine Learning for Finance",
+      "Capital Markets and Regulation and Compliance",
+    ],
   },
   {
     title: "BSc (Hons) in Computer Science",
     organisation: "Munster Technological University (MTU Kerry)",
     duration: "2022 - 2026",
-    description:
-      "First Class Honours (1:1). Modules: Artificial Intelligence, Advanced Databases, Data Analytics, Data Structures and Concurrency, Cloud Analytics, Software Project Management.",
+    highlight: "First Class Honours (1:1)",
+    modules: [
+      "Artificial Intelligence",
+      "Advanced Databases",
+      "Data Analytics",
+      "Data Structures and Concurrency",
+      "Cloud Analytics",
+      "Software Project Management",
+    ],
   },
 ];
 
@@ -66,23 +84,72 @@ const activities: Entry[] = [
   },
 ];
 
+function GroupHeading({ heading, count }: { heading: string; count: number }) {
+  return (
+    <div className="ledger-heading">
+      <h3 className="ledger-heading-title">{heading}</h3>
+      <span className="label">{String(count).padStart(2, "0")}</span>
+    </div>
+  );
+}
+
+function EntryBody({ entry }: { entry: Entry }) {
+  return (
+    <div className="ledger-body">
+      <h4 className="ledger-title">{entry.title}</h4>
+      {entry.organisation && <p className="ledger-org">{entry.organisation}</p>}
+      {entry.highlight && (
+        <p className="ledger-highlight label">{entry.highlight}</p>
+      )}
+      {entry.description && <p className="ledger-text">{entry.description}</p>}
+      {entry.points && (
+        <ul className="ledger-points">
+          {entry.points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      )}
+      {entry.modules && (
+        <div className="ledger-modules">
+          <span className="label ledger-modules-key">Modules</span>
+          <ul className="label-list">
+            {entry.modules.map((module) => (
+              <li key={module} className="label label--chip">
+                {module}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Ledger({ heading, entries }: { heading: string; entries: Entry[] }) {
   return (
     <div className="ledger-group">
-      <h3 className="ledger-heading">{heading}</h3>
+      <GroupHeading heading={heading} count={entries.length} />
       <ul className="ledger">
         {entries.map((entry) => (
           <li key={entry.title} className="ledger-row">
             <span className="ledger-key label">{entry.duration}</span>
-            <div className="ledger-body">
-              <h4 className="ledger-title">{entry.title}</h4>
-              {entry.organisation && (
-                <p className="ledger-org">{entry.organisation}</p>
-              )}
-              {entry.description && (
-                <p className="ledger-text">{entry.description}</p>
-              )}
-            </div>
+            <EntryBody entry={entry} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function ActivityGrid({ entries }: { entries: Entry[] }) {
+  return (
+    <div className="ledger-group">
+      <GroupHeading heading="Activities" count={entries.length} />
+      <ul className="activity-grid">
+        {entries.map((entry) => (
+          <li key={entry.title} className="activity">
+            <span className="ledger-key label">{entry.duration}</span>
+            <EntryBody entry={entry} />
           </li>
         ))}
       </ul>
@@ -97,7 +164,7 @@ export default function ExperienceEducation() {
       <div className="section-body ledger-columns">
         <Ledger heading="Experience" entries={experience} />
         <Ledger heading="Education" entries={education} />
-        <Ledger heading="Activities" entries={activities} />
+        <ActivityGrid entries={activities} />
         <Skills />
       </div>
     </section>

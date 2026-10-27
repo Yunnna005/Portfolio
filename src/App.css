@@ -454,11 +454,27 @@
 }
 
 .ledger-heading {
-  margin-bottom: 16px;
-  font-family: var(--font-mono);
-  font-size: var(--step-label);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  margin-bottom: 8px;
+  border-top: 2px solid var(--ink);
+}
+
+.ledger-heading-title {
+  font-family: var(--font-display);
+  font-size: var(--step-lead);
   font-weight: 400;
-  color: var(--muted);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.ledger-heading + .ledger > .ledger-row:first-child,
+.ledger-heading + .activity-grid > .activity {
+  border-top: 0;
 }
 
 .ledger-row {
@@ -501,6 +517,82 @@
   color: var(--ink);
 }
 
+.ledger-highlight {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 4px 8px;
+  background: var(--accent);
+  color: var(--navy);
+}
+
+.ledger-points {
+  display: grid;
+  gap: 8px;
+  max-width: 60ch;
+  margin-top: 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.ledger-points li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--ink);
+}
+
+.ledger-points li::before {
+  content: "";
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+}
+
+.ledger-modules {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Activities: a compact two-column grid instead of full ledger rows */
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: var(--gutter);
+  padding: 0;
+  list-style: none;
+}
+
+.activity {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding-block: 24px;
+  border-top: 1px solid var(--rule);
+}
+
+.activity .ledger-title {
+  font-size: var(--step-body);
+  font-weight: 500;
+  font-family: var(--font-text);
+  line-height: 1.35;
+}
+
+.activity .ledger-org {
+  margin-top: 2px;
+  font-size: var(--step-label);
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+
+.activity .ledger-text {
+  margin-top: 8px;
+  color: var(--ink-soft);
+}
+
 @media (min-width: 768px) {
   .ledger-row {
     grid-template-columns: 200px minmax(0, 1fr);
@@ -509,6 +601,14 @@
 
   .ledger-key.label {
     padding-top: 6px;
+  }
+
+  .activity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ledger-heading + .activity-grid > .activity:nth-child(2) {
+    border-top: 0;
   }
 
   .ledger-row--skills {

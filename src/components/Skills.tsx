@@ -3,7 +3,10 @@ import { skillAreas } from "../data/skills";
 export default function Skills() {
   return (
     <div className="ledger-group">
-      <h3 className="ledger-heading">Skills</h3>
+      <div className="ledger-heading">
+        <h3 className="ledger-heading-title">Skills</h3>
+        <span className="label">{String(skillAreas.length).padStart(2, "0")}</span>
+      </div>
       <ul className="ledger">
         {skillAreas.map((area) => (
           <li key={area.title} className="ledger-row ledger-row--skills">
