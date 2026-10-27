@@ -90,7 +90,7 @@ function parseMarkdownToProject(markdown: string): Project {
   return project as Project;
 }
 
-const FEATURED_COUNT = 3;
+const FEATURED_COUNT = 2;
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>(ALL_CATEGORIES);
@@ -140,10 +140,11 @@ export default function Projects() {
       ) : (
         <>
           <ol className="projects-featured">
-            {featured.map((project) => (
+            {featured.map((project, i) => (
               <ProjectCard
                 key={project.name}
                 project={project}
+                position={i + 1}
                 openProjectDetails={openProjectDetails}
               />
             ))}

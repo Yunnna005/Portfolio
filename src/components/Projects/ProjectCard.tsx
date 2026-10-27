@@ -1,29 +1,87 @@
+import { useState } from "react";
 import { Project } from "./Projects";
 import TagList from "./TagList";
 import { hasRealLink } from "./projectLinks";
 
 interface ProjectCardProps {
   project: Project;
+  position: number;
   openProjectDetails: (project: Project) => void;
 }
 
+const pad = (n: number) => String(n).padStart(2, "0");
+
+// "Bloom (Final Year Project)" -> title "Bloom", note "Final Year Project"
+const splitName = (name: string) => {
+  const match = name.match(/^(.+?)\s*\((.+)\)$/);
+  return match ? { title: match[1], note: match[2] } : { title: name, note: null };
+};
+
 export default function ProjectCard({
   project,
+  position,
   openProjectDetails,
 }: ProjectCardProps) {
+  const [frame, setFrame] = useState(0);
+  // The frame takes the first screenshot's shape; the others letterbox inside it
+  const [ratio, setRatio] = useState<number | null>(null);
+  const frames = project.images;
+  const { title, note } = splitName(project.name);
+
   return (
     <li className="project">
-      <figure className="project-figure">
-        {project.images[0] && (
-          <img src={project.images[0]} alt={`${project.name} screenshot`} loading="lazy" />
+      {/* A terminal screen that steps through the project's screenshots */}
+      <div className="project-screen theme-navy">
+        <p className="project-screen-bar label">
+          <span className="project-screen-title">
+            <span>{pad(position)}</span>
+            {note && <span>{note}</span>}
+          </span>
+          <span>
+            {pad(frame + 1)} / {pad(frames.length)}
+          </span>
+        </p>
+
+        <figure className="project-figure" style={ratio ? { aspectRatio: ratio } : undefined}>
+          {frames.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              onLoad={
+                i === 0
+                  ? (e) => setRatio(e.currentTarget.naturalWidth / e.currentTarget.naturalHeight)
+                  : undefined
+              }
+              alt={i === frame ? `${project.name} screenshot ${i + 1} of ${frames.length}` : ""}
+              aria-hidden={i !== frame}
+              data-active={i === frame}
+              loading="lazy"
+            />
+          ))}
+        </figure>
+
+        {frames.length > 1 && (
+          <div className="project-frames" role="group" aria-label={`${project.name} screenshots`}>
+            {frames.map((src, i) => (
+              <button
+                key={src}
+                type="button"
+                className="project-frame"
+                aria-label={`Screenshot ${i + 1}`}
+                aria-pressed={i === frame}
+                onClick={() => setFrame(i)}
+                onPointerEnter={() => setFrame(i)}
+              />
+            ))}
+          </div>
         )}
-        {project.images[1] && (
-          <img className="project-figure-alt" src={project.images[1]} alt="" loading="lazy" />
-        )}
-      </figure>
+      </div>
 
       <div className="project-text">
-        <h3 className="project-name">{project.name}</h3>
+        <h3 className="project-name">
+          {title}
+          {note && <span className="visually-hidden"> ({note})</span>}
+        </h3>
         <p className="project-description">{project.description}</p>
 
         <dl className="spec">

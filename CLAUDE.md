@@ -85,7 +85,7 @@ Role tokens: `--ground`, `--surface`, `--ink`, `--ink-soft`, `--muted`, `--butto
 - **Signature element: the dot grid.** Dots in the panel's muted colour; dots near the pointer grow and turn `--accent`, then ease back. One sweep on load. With `prefers-reduced-motion` it is still. `aria-hidden`, no library.
 - **Ticker:** a navy band under the hero scrolling the skills as mono labels separated by yellow ▲ markers, like a stock ticker. It holds real skills only, no prices. Still and clipped under reduced motion. `aria-hidden` (the skills are listed in full in section 01).
 - **01 Experience and education:** ledger rows (mono period, serif role or degree, organisation, description) separated by `--surface` rules, then the skills ledger.
-- **02 Projects:** the filter, then the three most recent projects as features: the first large (screenshot over 8 columns, text over 4), the next two side by side and staggered. Each shows a spec sheet (year, category, stack), "Read more" (opens the modal) and the project link. Hovering a screenshot fades to the project's second image. A "Show N more projects" button reveals the rest as an index table (year, project, category, stack); each name opens the modal.
+- **02 Projects:** the filter, then the two most recent projects as full-width mirrored rows. Each row has a navy terminal screen over 8 columns that bleeds off the page edge (left on the first row, right on the second) and text over 4 columns, both the same height (the name lines up with the top of the screen, the spec sheet and links with the bottom). Between 1080px and 1439px the screenshots would be shorter than the text, so the screen runs full width with the text under it in two columns. The screen has a mono top bar (position, the bracketed part of the project name such as "Final Year Project", frame counter), the screenshots letterboxed in a frame shaped like the first one, and a frame stepper of square dots like the dot grid (the active dot is yellow; hover or click to switch, crossfade). The text has the serif name, description, a spec sheet (year, category, stack), "Read more" (opens the modal) and the project link. A "Show N more projects" button reveals the rest as an index table (year, project, category, stack); each name opens the modal.
 - **03 Contact:** a full-width yellow field. One serif line, the email set large in navy, mono rows for location, languages and links, and the message form behind a toggle.
 - **Footer:** navy. The name in the serif at full width, the copyright as a mono label.
 
@@ -95,7 +95,7 @@ Role tokens: `--ground`, `--surface`, `--ink`, `--ink-soft`, `--muted`, `--butto
 - Square corners everywhere. Visible keyboard focus: a 2px outline in `--ink`, offset 4px.
 - No hairline rules, except between ledger, spec and table rows (real tabular data).
 
-**Motion:** the dot grid, the ticker and the image crossfade on hover. Nothing else moves. Every animation respects `prefers-reduced-motion`.
+**Motion:** the dot grid, the ticker and the project screenshot crossfade. Nothing else moves. Every animation respects `prefers-reduced-motion`.
 
 **Styling approach:** plain CSS with custom properties. Do not use Tailwind. Components reference the role tokens only.
 

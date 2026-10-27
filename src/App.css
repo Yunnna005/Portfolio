@@ -10,6 +10,15 @@
   font-variant-numeric: tabular-nums;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .label--chip {
   padding: 4px 8px;
   background: var(--surface);
@@ -262,6 +271,28 @@
   align-items: center;
   gap: 24px 40px;
   margin-top: 40px;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Sized to the CV button: its 12px padding twice plus one line of text */
+.icon-link {
+  display: inline-flex;
+  color: var(--ink);
+  transition: color 160ms ease;
+}
+
+.icon-link svg {
+  width: calc(24px + var(--step-body) * 1.2);
+  height: calc(24px + var(--step-body) * 1.2);
+}
+
+.icon-link:hover {
+  color: var(--ink-soft);
 }
 
 .hero-facts {
