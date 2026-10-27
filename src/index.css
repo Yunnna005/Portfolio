@@ -1,57 +1,170 @@
-@import url("https://fonts.googleapis.com/css2?family=Madimi+One&family=Mitr&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400&family=Newsreader:opsz,wght@6..72,300..500&family=Onest:wght@400;500&display=swap");
 
+/* Design direction tokens (see CLAUDE.md, "Design direction") */
 :root {
-  --background-color: linear-gradient(
-    to bottom,
-    rgb(255, 255, 255) 30%,
-    rgb(66, 150, 229) 100%
-  );
-  --foreground-color: rgb(43, 44, 49);
-  --primary-color: #5368b3;
-  --secondary-color: #c3a6d8;
-  --accent-color: #bd76c3;
-  --font-title: "Madimi One", sans-serif;
-  --font-body: "Mitr", sans-serif;
-  --text-color-navbar: #2c5282;
-  --text-hover-color: #bd76c3;
-  --header-color: rgba(255, 255, 255, 0.93);
-  --border-color: rgba(0, 11, 114, 0.26);
+  --paper: #eef1f6;
+  --paper-2: #e0e5ee;
+  --navy: #14203a;
+  --navy-2: #1f2d4b;
+  --accent: #ffcf3d;
+
+  /* Role tokens: components use these; theme classes swap them */
+  --ground: var(--paper);
+  --surface: var(--paper-2);
+  --ink: var(--navy);
+  --ink-soft: #3d4a62;
+  --muted: #5b6578;
+  --button-bg: var(--accent);
+  --button-ink: var(--navy);
+  --mark: var(--accent);
+  --rule: rgb(20 32 58 / 0.16);
+  --overlay: rgb(20 32 58 / 0.88);
+
+  /* Terminal block grounds; the dark theme lifts them above its ground */
+  --terminal: var(--navy);
+  --terminal-2: var(--navy-2);
+
+  color-scheme: light;
+
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-text: "Onest", system-ui, sans-serif;
+  --font-mono: "Martian Mono", ui-monospace, monospace;
+
+  --step-label: clamp(0.75rem, 0.73rem + 0.08vw, 0.8125rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.2rem, 1.1rem + 0.45vw, 1.5rem);
+  --step-head: clamp(2.25rem, 1.75rem + 1.6vw, 3.5rem);
+  --step-display: clamp(3.5rem, 1.6rem + 8vw, 9rem);
+
+  --page-margin: clamp(20px, 5vw, 96px);
+  --gutter: 16px;
+  --section-gap: 80px;
 }
 
-h1 {
-  font-family: var(--font-title);
-  color: rgb(236, 245, 255);
-  font-size: 3.5rem;
-  margin-bottom: 0;
+/* Dark theme: night ink ground, the terminal blocks sit one step lighter.
+   data-theme is set on <html> by the script in index.html. */
+:root[data-theme="dark"] {
+  --ground: #0b1220;
+  --surface: #182238;
+  --ink: #e8ecf3;
+  --ink-soft: #c3cbd9;
+  --muted: #9aa6bb;
+  --mark: #26355a;
+  --rule: rgb(232 236 243 / 0.14);
+  --overlay: rgb(5 9 18 / 0.9);
+  --terminal: #19253f;
+  --terminal-2: #26355a;
+
+  color-scheme: dark;
 }
 
-h2 {
-  font-family: var(--font-title);
-  color: #2c5282;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  font-size: 1.6rem;
+.theme-navy {
+  --ground: var(--terminal);
+  --surface: var(--terminal-2);
+  --ink: #e8ecf3;
+  --ink-soft: #c3cbd9;
+  --muted: #9aa6bb;
+  --mark: var(--terminal-2);
+  --rule: rgb(232 236 243 / 0.14);
+  background: var(--ground);
+  color: var(--ink);
 }
 
-p {
-  color: var(--foreground-color);
-  font-size: 1rem;
-  line-height: 1.3;
+.theme-accent {
+  --ground: var(--accent);
+  --surface: #f2c22e;
+  --ink: var(--navy);
+  --ink-soft: var(--navy);
+  --muted: #4a4230;
+  --button-bg: var(--navy);
+  --button-ink: var(--paper);
+  --mark: var(--paper);
+  --rule: rgb(20 32 58 / 0.24);
+  background: var(--ground);
+  color: var(--ink);
+}
+
+@media (min-width: 1080px) {
+  :root {
+    --gutter: 24px;
+    --section-gap: 120px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
-  background-color: var(--background-color);
-  color: var(--foreground-color);
-  font-family: var(--font-body);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8em;
-  width: 100%;
   margin: 0;
-  padding: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--step-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--navy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

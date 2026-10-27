@@ -4,12 +4,12 @@ interface TagListProps {
 
 export default function TagList({ tags }: TagListProps) {
   return (
-    <div className="project-tags">
+    <ul className="label-list">
       {tags.map((tag, tagIndex) => (
-        <span key={tagIndex} className="tag">
+        <li key={tagIndex} className="label label--chip">
           {tag}
-        </span>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

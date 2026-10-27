@@ -16,6 +16,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.0.1",
+    "react-router-dom": "^7.18.4",
     "vite-plugin-glob": "^0.3.2"
   },
   "devDependencies": {
@@ -32,5 +33,18 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
-  }
+  },
+  "description": "[Portfolio](https://yunnna005.github.io/Portfolio/)",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yunnna005/Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yunnna005/Portfolio/issues"
+  },
+  "homepage": "https://github.com/Yunnna005/Portfolio#readme"
 }
