@@ -24,7 +24,7 @@ There is no test suite.
 - **Layout:** `App.tsx` stacks the sections in order: Header → Hero (with the `DotGrid` canvas and `Clock`) → Ticker → ExperienceEducation (01, which also renders `Skills` as a ledger) → Projects (02) → ContactMe (03) → Footer. Each numbered section opens with `SectionHead`. Navigation uses in-page anchors (`#experience`, `#projects`, `#contact`) rather than routes.
 - **Projects come from markdown:** `components/Projects/Projects.tsx` loads every `src/projects/*.md` with `import.meta.glob(..., { as: 'raw' })` and parses it with regexes into a `Project`. To add a project, add a `.md` file that follows the existing heading structure exactly: `# Name`, then `## Date` (YYYY-MM-DD, used for sorting), `## Description`, `## Tags` (comma-separated), `## Category` (must match a filter in `FilterButtons.tsx`), `## Link`, `## Images` (one path per line) and `## Detailed Info` (rendered by `react-markdown` in `ProjectModal`). A heading that is misspelled or missing makes its field silently `undefined`.
 - **Styling:** plain CSS, mobile first with `min-width` blocks at 768px and 1080px. Tokens, fonts and the reset are in `src/index.css`; layout and shared components (labels, buttons, ledger, spec sheet, contact, footer) in `src/App.css`; project rows and the modal in `components/Projects/Projects.css`.
-- **Contact form:** `ContactMe.tsx` sends mail through EmailJS from the browser. The service, template and public-key IDs are hard-coded in the component. The form is hidden behind a toggle; the email link is the primary action.
+- **Contact form:** `ContactMe.tsx` uses no mail service. On submit it builds a `mailto:` URL with the subject and the message (plus the visitor's name as a sign-off) URL-encoded into `subject` and `body`, and opens the visitor's own mail app. There is no email field, since the reply address comes from the visitor's mail app. The address is the `EMAIL` constant. The form is hidden behind a toggle; the email link is the primary action.
 - **Placeholder links:** project links containing `portfolio-example.com` are hidden (`hasRealLink` in `Projects/projectLinks.ts`).
 
 ## Redesign in progress
@@ -42,7 +42,7 @@ Stack: keep React + TypeScript + Vite and the GitHub Pages deploy. `react-router
 - Mobile first. Check every change at 375px wide.
 - Every animation respects `prefers-reduced-motion`.
 - No new heavy libraries without asking me first.
-- Don't touch the EmailJS IDs in `ContactMe.tsx`.
+- Don't add a third-party mail service (EmailJS, Formspree and the like) to the contact form. It stays `mailto:` only.
 - Show me a plan before any big change.
 - Run `npm run build` before saying a change is done, since there are no tests.
 
