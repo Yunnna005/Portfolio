@@ -1,19 +1,16 @@
 import { useState } from "react";
-import emailjs from "emailjs-com";
 import SectionHead from "./SectionHead";
+
+const EMAIL = "annakovalenko0050@gmail.com";
 
 export default function ContactMe() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     subject: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(
-    null
-  );
+  const [isMailOpened, setIsMailOpened] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,29 +22,19 @@ export default function ContactMe() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Opens the visitor's own mail app with the subject and message filled in.
+  // encodeURIComponent keeps spaces and line breaks as %20 and %0A, which mail apps expect.
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus(null);
 
-    try {
-      const serviceID = "service_fy9l4aj";
-      const templateID = "template_qva1g1b";
-      const userID = "BLHHn1yRmVNrHvv7K";
+    const body = `${formData.message}\n\n${formData.name}`;
+    const href =
+      `mailto:${EMAIL}` +
+      `?subject=${encodeURIComponent(formData.subject)}` +
+      `&body=${encodeURIComponent(body)}`;
 
-      await emailjs.send(serviceID, templateID, formData, userID);
-      setSubmitStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-    } catch {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    window.location.href = href;
+    setIsMailOpened(true);
   };
 
   return (
@@ -58,8 +45,8 @@ export default function ContactMe() {
         <p className="contact-line">
           Have a project in mind or want to collaborate?
         </p>
-        <a className="contact-email" href="mailto:annakovalenko0050@gmail.com">
-          annakovalenko0050@gmail.com
+        <a className="contact-email" href={`mailto:${EMAIL}`}>
+          {EMAIL}
         </a>
 
         <dl className="spec contact-spec">
@@ -114,19 +101,6 @@ export default function ContactMe() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              autoComplete="email"
-            />
-          </div>
-
-          <div className="form-group form-group--wide">
             <label htmlFor="subject">Subject</label>
             <input
               type="text"
@@ -151,23 +125,14 @@ export default function ContactMe() {
           </div>
 
           <div className="form-footer">
-            <button
-              type="submit"
-              className="button-primary"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Sending..." : "Send message"}
+            <button type="submit" className="button-primary">
+              Open in my email app
             </button>
 
-            {submitStatus === "success" && (
+            {isMailOpened && (
               <p className="status-message" role="status">
-                Message sent successfully! I'll get back to you soon.
-              </p>
-            )}
-
-            {submitStatus === "error" && (
-              <p className="status-message status-message--error" role="alert">
-                There was an error sending your message. Please try again.
+                Your email app should open with the message ready to send. If
+                nothing happened, write to {EMAIL} directly.
               </p>
             )}
           </div>
